@@ -1,44 +1,44 @@
 {
-      "name": "Client / Sales Meeting",
-      "description": "Capture client goals, deliverables, and next steps.",
+      "name": "Kunden-/Sales-Meeting",
+      "description": "Kundenziele, Liefergegenstände und nächste Schritte festhalten.",
       "sections": [
         {
-          "title": "Meeting Metadata",
-          "instruction": "Date, time, location/modality, account manager",
+          "title": "Meeting-Metadaten",
+          "instruction": "Datum, Uhrzeit, Ort/Modus, Account Manager:in",
           "format": "string"
         },
         {
-          "title": "Attendees",
-          "instruction": "Client and vendor attendees with roles",
+          "title": "Teilnehmende",
+          "instruction": "Kund:innen- und Anbieter-Teilnehmende mit Rollen",
           "format": "list"
         },
         {
-          "title": "Client Goals & Success Criteria",
-          "instruction": "What the client wants to achieve and how success will be measured",
+          "title": "Kundenziele & Erfolgskriterien",
+          "instruction": "Was der Kunde erreichen möchte und wie Erfolg gemessen wird",
           "format": "paragraph"
         },
         {
-          "title": "Agreed Deliverables",
-          "instruction": "Deliverables, owners, and due dates",
+          "title": "Vereinbarte Deliverables",
+          "instruction": "Deliverables mit Verantwortlichen und Fälligkeit",
           "format": "list",
-          "item_format": "| **Deliverable** | **Owner** | **Due Date** |\n| --- | --- | --- |"
+          "item_format": "| **Deliverable** | **Verantwortlich** | **Fällig bis** |\n| --- | --- | --- |"
         },
         {
-          "title": "Commercial Terms Discussed",
-          "instruction": "Pricing, SLAs, payment terms or contract items discussed",
+          "title": "Verhandelte Konditionen",
+          "instruction": "Preise, SLAs, Zahlungsbedingungen oder Vertragsinhalte",
           "format": "paragraph"
         },
         {
-          "title": "Risks & Concerns",
-          "instruction": "Client concerns, blockers, or escalation items",
+          "title": "Risiken & Bedenken",
+          "instruction": "Bedenken des Kunden, Blocker oder Eskalationsthemen",
           "format": "list",
-          "item_format": "| **Concern** | **Impact** | **Owner** |\n| --- | --- | --- |"
+          "item_format": "| **Thema** | **Auswirkung** | **Verantwortlich** |\n| --- | --- | --- |"
         },
         {
-          "title": "Next Steps",
-          "instruction": "Actions, owners, and due dates",
+          "title": "Nächste Schritte",
+          "instruction": "Aktionen, Verantwortliche und Fälligkeit",
           "format": "list",
-          "item_format": "| **Owner** | **Action** | **Due Date** |\n| --- | --- | --- |"
+          "item_format": "| **Verantwortlich** | **Aktion** | **Fällig bis** |\n| --- | --- | --- |"
         }
       ]
     }

@@ -15,6 +15,7 @@ import { LegacyDatabaseImport } from '@/components/DatabaseImport/LegacyDatabase
 import { TooltipProvider } from '@/components/ui/tooltip'
 import { RecordingStateProvider } from '@/contexts/RecordingStateContext'
 import { OllamaDownloadProvider } from '@/contexts/OllamaDownloadContext'
+import { I18nProvider } from '@/lib/i18n'
 
 const sourceSans3 = Source_Sans_3({
   subsets: ['latin'],
@@ -64,23 +65,25 @@ export default function RootLayout({
   }, [])
 
   return (
-    <html lang="en">
+    <html lang="de">
       <body className={`${sourceSans3.variable} font-sans`}>
-        <AnalyticsProvider>
-          <RecordingStateProvider>
-            <OllamaDownloadProvider>
-              <SidebarProvider>
-                <TooltipProvider>
-                  {/* <div className="titlebar h-8 w-full fixed top-0 left-0 bg-transparent" /> */}
-                  <div className="flex">
-                    <Sidebar />
-                    <MainContent>{children}</MainContent>
-                  </div>
-                </TooltipProvider>
-              </SidebarProvider>
-            </OllamaDownloadProvider>
-          </RecordingStateProvider>
-        </AnalyticsProvider>
+        <I18nProvider initialLanguage="de">
+          <AnalyticsProvider>
+            <RecordingStateProvider>
+              <OllamaDownloadProvider>
+                <SidebarProvider>
+                  <TooltipProvider>
+                    {/* <div className="titlebar h-8 w-full fixed top-0 left-0 bg-transparent" /> */}
+                    <div className="flex">
+                      <Sidebar />
+                      <MainContent>{children}</MainContent>
+                    </div>
+                  </TooltipProvider>
+                </SidebarProvider>
+              </OllamaDownloadProvider>
+            </RecordingStateProvider>
+          </AnalyticsProvider>
+        </I18nProvider>
         <Toaster position="bottom-center" richColors closeButton />
         <LegacyDatabaseImport
           isOpen={showImportDialog}

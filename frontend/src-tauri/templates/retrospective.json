@@ -1,44 +1,44 @@
 {
-      "name": "Retrospective (Agile)",
-      "description": "Sprint retrospective template for continuous improvement.",
+      "name": "Retrospektive (Agile)",
+      "description": "Sprint-Retrospektive für kontinuierliche Verbesserung.",
       "sections": [
         {
           "title": "Sprint",
-          "instruction": "Sprint name/number and date range",
+          "instruction": "Sprint-Name/-Nummer und Zeitraum",
           "format": "string"
         },
         {
-          "title": "Attendance",
-          "instruction": "List of participants",
+          "title": "Teilnehmende",
+          "instruction": "Liste der Anwesenden",
           "format": "list"
         },
         {
-          "title": "Start Doing",
-          "instruction": "Actions or experiments to start next sprint",
+          "title": "Anfangen",
+          "instruction": "Maßnahmen oder Experimente für den nächsten Sprint",
           "format": "list",
-          "item_format": "| **Idea** | **Proposer** |\n| --- | --- |"
+          "item_format": "| **Idee** | **Vorschlag von** |\n| --- | --- |"
         },
         {
-          "title": "Stop Doing",
-          "instruction": "Practices to stop",
+          "title": "Aufhören",
+          "instruction": "Praktiken, die beendet werden sollen",
           "format": "list",
-          "item_format": "| **Practice** | **Reason** |\n| --- | --- |"
+          "item_format": "| **Praxis** | **Grund** |\n| --- | --- |"
         },
         {
-          "title": "Continue Doing",
-          "instruction": "Practices to continue",
+          "title": "Beibehalten",
+          "instruction": "Praktiken, die fortgeführt werden sollen",
           "format": "list",
-          "item_format": "| **Practice** | **Notes** |\n| --- | --- |"
+          "item_format": "| **Praxis** | **Notizen** |\n| --- | --- |"
         },
         {
-          "title": "Action Items",
-          "instruction": "Concrete experiments with owners and success metrics",
+          "title": "Aktionen",
+          "instruction": "Konkrete Experimente mit Verantwortlichen und Erfolgskriterien",
           "format": "list",
-          "item_format": "| **Owner** | **Task** | **Due Date** | **Success Metric** |\n| --- | --- | --- | --- |"
+          "item_format": "| **Verantwortlich** | **Aufgabe** | **Fällig bis** | **Erfolgskriterium** |\n| --- | --- | --- | --- |"
         },
         {
-          "title": "Notes & Votes",
-          "instruction": "Summary and top-voted items",
+          "title": "Notizen & Stimmen",
+          "instruction": "Zusammenfassung und Top-Bewertungen",
           "format": "paragraph"
         }
       ]

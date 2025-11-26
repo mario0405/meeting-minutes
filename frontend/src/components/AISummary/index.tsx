@@ -5,6 +5,7 @@ import { Summary, Block } from '@/types';
 import { Section } from './Section';
 import { EditableTitle } from '../EditableTitle';
 import { ExclamationTriangleIcon, CheckCircleIcon, ClipboardDocumentCheckIcon } from '@heroicons/react/24/outline';
+import { useTranslation } from '@/lib/i18n';
 
 interface Props {
   summary: Summary | null;
@@ -20,6 +21,7 @@ interface Props {
 }
 
 export const AISummary = ({ summary, status, error, onSummaryChange, onRegenerateSummary, meeting }: Props) => {
+  const { t } = useTranslation();
   const generateUniqueId = (sectionKey: string) => {
     return `${sectionKey}-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
   };
@@ -622,12 +624,12 @@ export const AISummary = ({ summary, status, error, onSummaryChange, onRegenerat
         <div className="animate-spin rounded-full h-5 w-5 border-2 border-blue-500 border-t-transparent"></div>
         <div>
           <h3 className="text-blue-700 font-medium">
-            {status === 'processing' ? 'Processing Transcript' : 'Generating Summary'}
+            {status === 'processing' ? t('processingTranscriptTitle') : t('generatingSummaryTitle')}
           </h3>
           <p className="text-blue-600 text-sm">
             {status === 'processing' 
-              ? 'Analyzing your transcript...' 
-              : 'Creating a detailed summary of your meeting...'}
+              ? t('processingTranscriptBody') 
+              : t('generatingSummaryBody')}
           </p>
         </div>
       </div>
@@ -649,11 +651,15 @@ export const AISummary = ({ summary, status, error, onSummaryChange, onRegenerat
   if (!hasContent && status === 'completed') {
     return (
       <div className="w-full p-4 bg-gray-50 border border-gray-200 rounded-lg text-center">
-        <p className="text-gray-600">No summary content available.</p>
-        <p className="text-gray-500 text-sm mt-1">Try generating a new summary.</p>
+        <p className="text-gray-600">{t('summaryEmptyTitle')}</p>
+        <p className="text-gray-500 text-sm mt-1">{t('summaryEmptySubtitle')}</p>
       </div>
     );
   }
+
+  const hasMultipleSelections = selectedBlocks.length > 1;
+  const copyLabel = hasMultipleSelections ? t('copyBlocksLabel') : t('copyBlockLabel');
+  const deleteLabel = hasMultipleSelections ? t('deleteMultipleBlocksLabel') : t('deleteBlocksLabel');
 
   return (
     <div className="relative">
@@ -685,14 +691,14 @@ export const AISummary = ({ summary, status, error, onSummaryChange, onRegenerat
             onClick={handleCopyBlocks}
           >
             <span className="text-gray-600">📋</span>
-            <span>Copy {selectedBlocks.length > 1 ? `${selectedBlocks.length} blocks` : 'block'}</span>
+            <span>{copyLabel}{hasMultipleSelections ? ` (${selectedBlocks.length})` : ''}</span>
           </button>
           <button
             className="w-full px-4 py-2 text-left hover:bg-gray-100 text-red-600 flex items-center space-x-2"
             onClick={handleDeleteBlocks}
           >
             <span>🗑️</span>
-            <span>Delete {selectedBlocks.length > 1 ? `${selectedBlocks.length} blocks` : 'block'}</span>
+            <span>{deleteLabel}{hasMultipleSelections ? ` (${selectedBlocks.length})` : ''}</span>
           </button>
         </div>
       )}
@@ -750,7 +756,7 @@ export const AISummary = ({ summary, status, error, onSummaryChange, onRegenerat
           <button
             onClick={handleAddSection}
             className="p-2 hover:bg-gray-100 rounded"
-            title="Add new section"
+            title={t('addSectionTitle')}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

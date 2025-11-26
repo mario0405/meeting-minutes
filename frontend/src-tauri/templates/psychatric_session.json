@@ -1,63 +1,63 @@
  {
-      "name": "Psychiatric Session Note (SOAP + AI Hybrid)",
-      "description": "AI-assisted psychiatric progress note template based on SOAP, with clinical metadata and AI summary.",
+      "name": "Psychiatrische Sitzung (SOAP + KI)",
+      "description": "KI-unterstützte Verlaufsdokumentation nach SOAP mit klinischen Metadaten und KI-Zusammenfassung.",
       "sections": [
         {
-          "title": "Session Metadata",
-          "instruction": "Patient initials/ID, session date, provider, session type, duration (HIPAA-sensitive)",
+          "title": "Sitzungsmetadaten",
+          "instruction": "Patienten-Kürzel/ID, Datum, Behandler:in, Sitzungstyp, Dauer",
           "format": "string"
         },
         {
-          "title": "AI Session Summary",
-          "instruction": "One-line takeaway and one-paragraph executive summary (AI-generated). Include confidence score.",
+          "title": "KI-Sitzungszusammenfassung",
+          "instruction": "Ein kurzer Kerngedanke und eine Executive Summary (KI-generiert) mit Vertrauenswert.",
           "format": "paragraph"
         },
         {
-          "title": "Subjective (S)",
-          "instruction": "Patient's self-reported mood, symptoms, sleep, appetite, stressors",
+          "title": "Subjektiv (S)",
+          "instruction": "Selbstauskunft zu Stimmung, Symptomen, Schlaf, Appetit, Stressoren",
           "format": "paragraph"
         },
         {
-          "title": "Objective (O)",
-          "instruction": "Observable findings: affect, speech, behavior, orientation, vitals if relevant",
+          "title": "Objektiv (O)",
+          "instruction": "Beobachtbare Befunde: Affekt, Sprache, Verhalten, Orientierung, Vitalparameter",
           "format": "paragraph"
         },
         {
-          "title": "Assessment (A)",
-          "instruction": "Diagnostic impression, risk assessment (SI/HI), progress vs treatment goals",
+          "title": "Einschätzung (A)",
+          "instruction": "Diagnostischer Eindruck, Risikobewertung (SI/HI), Fortschritt gegenüber Behandlungszielen",
           "format": "paragraph"
         },
         {
           "title": "Plan (P)",
-          "instruction": "Interventions, medication changes, referrals, therapy tasks and follow-up",
+          "instruction": "Interventionen, Medikamentenanpassungen, Überweisungen, Therapieaufträge und Follow-up",
           "format": "list",
-          "item_format": "| **Intervention** | **Owner** | **Frequency** | **Follow-up Date** |\n| --- | --- | --- | --- |"
+          "item_format": "| **Intervention** | **Verantwortlich** | **Frequenz** | **Follow-up-Datum** |\n| --- | --- | --- | --- |"
         },
         {
-          "title": "Medications",
-          "instruction": "Current medications, doses, changes, and rationale",
+          "title": "Medikationen",
+          "instruction": "Aktuelle Medikation, Dosierungen, Änderungen und Begründung",
           "format": "list",
-          "item_format": "| **Medication** | **Dose** | **Route** | **Start/Change Date** |\n| --- | --- | --- | --- |"
+          "item_format": "| **Medikament** | **Dosis** | **Applikation** | **Start-/Änderungsdatum** |\n| --- | --- | --- | --- |"
         },
         {
-          "title": "Diagnoses (DSM/ICD)",
-          "instruction": "List diagnostic codes and working diagnosis",
+          "title": "Diagnosen (DSM/ICD)",
+          "instruction": "Diagnosecodes und Arbeitsdiagnose",
           "format": "list",
-          "item_format": "| **Code** | **System** | **Diagnosis** |\n| --- | --- | --- |"
+          "item_format": "| **Code** | **System** | **Diagnose** |\n| --- | --- | --- |"
         },
         {
-          "title": "Safety & Risk Management",
-          "instruction": "Safety plan, emergency contacts, hospitalization considerations",
+          "title": "Sicherheit & Risikomanagement",
+          "instruction": "Sicherheitsplan, Notfallkontakte, ggf. stationäre Aufnahme",
           "format": "paragraph"
         },
         {
-          "title": "Next Appointment",
-          "instruction": "Date, time and modality of next session",
+          "title": "Nächster Termin",
+          "instruction": "Datum, Uhrzeit und Format der nächsten Sitzung",
           "format": "string"
         },
         {
-          "title": "Audit Trail",
-          "instruction": "Human review flag, reviewer name and timestamp, AI version",
+          "title": "Audit-Trail",
+          "instruction": "Hinweis auf manuelle Prüfung, Name und Zeitstempel der Prüfer:in, KI-Version",
           "format": "paragraph"
         }
       ]

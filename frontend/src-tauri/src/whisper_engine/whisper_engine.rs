@@ -547,11 +547,11 @@ impl WhisperEngine {
 
         // Configure with adaptive settings
         // If language is "auto" or None, use automatic language detection (pass None)
-        // If language is "auto-translate", enable translation to English
+        // If language is "auto-translate", keep original language (no forced English translation)
         // Otherwise, use the specified language code
         let (language_code, should_translate) = match language.as_deref() {
             Some("auto") | None => (None, false),
-            Some("auto-translate") => (None, true),
+            Some("auto-translate") => (None, false),
             Some(lang) => (Some(lang), false),
         };
         params.set_language(language_code);
@@ -664,11 +664,11 @@ impl WhisperEngine {
 
         // Configure for good quality
         // If language is "auto" or None, use automatic language detection (pass None)
-        // If language is "auto-translate", enable translation to English
+        // If language is "auto-translate", keep the detected language (no forced English translation)
         // Otherwise, use the specified language code
         let (language_code, should_translate) = match language.as_deref() {
             Some("auto") | None => (None, false),
-            Some("auto-translate") => (None, true),
+            Some("auto-translate") => (None, false),
             Some(lang) => (Some(lang), false),
         };
         params.set_language(language_code);

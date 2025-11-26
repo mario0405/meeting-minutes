@@ -31,6 +31,7 @@ import { Copy, GlobeIcon, Settings } from 'lucide-react';
 import { MicrophoneIcon } from '@heroicons/react/24/outline';
 import { toast } from 'sonner';
 import { ButtonGroup } from '@/components/ui/button-group';
+import { useTranslation } from '@/lib/i18n';
 
 
 
@@ -55,14 +56,14 @@ export default function Home() {
   const [showSummary, setShowSummary] = useState(false);
   const [summaryStatus, setSummaryStatus] = useState<SummaryStatus>('idle');
   const [barHeights, setBarHeights] = useState(['58%', '76%', '58%']);
-  const [meetingTitle, setMeetingTitle] = useState('+ New Call');
+  const [meetingTitle, setMeetingTitle] = useState('Neuer Call');
   const [isEditingTitle, setIsEditingTitle] = useState(false);
   const [customPrompt, setCustomPrompt] = useState('');
   const [aiSummary, setAiSummary] = useState<Summary | null>({
-    key_points: { title: "Key Points", blocks: [] },
-    action_items: { title: "Action Items", blocks: [] },
-    decisions: { title: "Decisions", blocks: [] },
-    main_topics: { title: "Main Topics", blocks: [] }
+    key_points: { title: "Kernpunkte", blocks: [] },
+    action_items: { title: "Aufgaben", blocks: [] },
+    decisions: { title: "Entscheidungen", blocks: [] },
+    main_topics: { title: "Hauptthemen", blocks: [] }
   });
   const [summaryResponse, setSummaryResponse] = useState<SummaryResponse | null>(null);
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -95,7 +96,7 @@ export default function Home() {
   const [showModelSelector, setShowModelSelector] = useState(false);
   const [modelSelectorMessage, setModelSelectorMessage] = useState('');
   const [showLanguageSettings, setShowLanguageSettings] = useState(false);
-  const [selectedLanguage, setSelectedLanguage] = useState('auto-translate');
+  const [selectedLanguage, setSelectedLanguage] = useState('de');
   const [isProcessingTranscript, setIsProcessingTranscript] = useState(false);
   const [isStopping, setIsStopping] = useState(false);
   const [showConfidenceIndicator, setShowConfidenceIndicator] = useState<boolean>(() => {
@@ -119,6 +120,7 @@ export default function Home() {
   const { setCurrentMeeting, setMeetings, meetings, isMeetingActive, setIsMeetingActive, setIsRecording: setSidebarIsRecording, serverAddress, isCollapsed: sidebarCollapsed, refetchMeetings } = useSidebar();
   const handleNavigation = useNavigation('', ''); // Initialize with empty values
   const router = useRouter();
+  const { t, setLanguage: setUiLanguage } = useTranslation();
 
   // Ref for final buffer flush functionality
   const finalFlushRef = useRef<(() => void) | null>(null);
@@ -227,6 +229,10 @@ export default function Home() {
     // Track page view
     Analytics.trackPageView('home');
   }, []);
+
+  useEffect(() => {
+    setUiLanguage(selectedLanguage === 'en' ? 'en' : 'de');
+  }, [selectedLanguage, setUiLanguage]);
 
   // Load saved transcript configuration on mount
   useEffect(() => {
@@ -1601,15 +1607,17 @@ export default function Home() {
         if (language) {
           setSelectedLanguage(language);
           console.log('Loaded language preference:', language);
+          setUiLanguage(language === 'en' ? 'en' : 'de');
         }
       } catch (error) {
-        console.log('No language preference found or failed to load, using default (auto-translate):', error);
-        // Default to 'auto-translate' (Auto Detect with English translation) if no preference is saved
-        setSelectedLanguage('auto-translate');
+        console.log('No language preference found or failed to load, using default (de):', error);
+        // Default to 'de' so transcripts and UI start in German
+        setSelectedLanguage('de');
+        setUiLanguage('de');
       }
     };
     loadLanguagePreference();
-  }, []);
+  }, [setUiLanguage]);
 
   return (
     <motion.div
@@ -2032,7 +2040,7 @@ export default function Home() {
             <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
               <div className="bg-white rounded-lg p-6 max-w-md w-full mx-4 shadow-xl">
                 <div className="flex justify-between items-center mb-4">
-                  <h3 className="text-lg font-semibold text-gray-900">Audio Device Settings</h3>
+                  <h3 className="text-lg font-semibold text-gray-900">{t('audioDeviceSettingsTitle')}</h3>
                   <button
                     onClick={() => setShowDeviceSettings(false)}
                     className="text-gray-500 hover:text-gray-700"
@@ -2054,14 +2062,14 @@ export default function Home() {
                     onClick={() => {
                       const micDevice = selectedDevices.micDevice || 'Default';
                       const systemDevice = selectedDevices.systemDevice || 'Default';
-                      toast.success("Devices selected", {
+                      toast.success(t('devicesSelectedToastTitle'), {
                         description: `Microphone: ${micDevice}, System Audio: ${systemDevice}`
                       });
                       setShowDeviceSettings(false);
                     }}
                     className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                   >
-                    Done
+                    {t('done')}
                   </button>
                 </div>
               </div>
@@ -2073,7 +2081,7 @@ export default function Home() {
             <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
               <div className="bg-white rounded-lg p-6 max-w-md w-full mx-4 shadow-xl">
                 <div className="flex justify-between items-center mb-4">
-                  <h3 className="text-lg font-semibold text-gray-900">Language Settings</h3>
+                  <h3 className="text-lg font-semibold text-gray-900">{t('languageSettingsTitle')}</h3>
                   <button
                     onClick={() => setShowLanguageSettings(false)}
                     className="text-gray-500 hover:text-gray-700"
@@ -2096,7 +2104,7 @@ export default function Home() {
                     onClick={() => setShowLanguageSettings(false)}
                     className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                   >
-                    Done
+                    {t('done')}
                   </button>
                 </div>
               </div>

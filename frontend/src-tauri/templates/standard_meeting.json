@@ -1,26 +1,26 @@
 {
-  "name": "Standard Meeting Notes",
-  "description": "A standard template for general meetings, focusing on key outcomes and actions.",
+  "name": "Standard-Meeting-Protokoll",
+  "description": "Standardvorlage für allgemeine Meetings mit Fokus auf Ergebnisse und Aufgaben.",
   "sections": [
     {
-      "title": "Summary",
-      "instruction": "Provide a brief, one-paragraph executive summary of the entire meeting.",
+      "title": "Zusammenfassung",
+      "instruction": "Kurze Executive Summary des gesamten Meetings in einem Absatz.",
       "format": "paragraph"
     },
     {
-      "title": "Key Decisions",
-      "instruction": "List the most important decisions made during the meeting.",
+      "title": "Wesentliche Entscheidungen",
+      "instruction": "Wichtigste Entscheidungen des Meetings als Liste.",
       "format": "list"
     },
     {
-      "title": "Action Items",
-      "instruction": "List all assigned tasks with their owners and due date. Always add reference transcript segment and timestamp in the table.",
+      "title": "Aufgaben",
+      "instruction": "Alle zugewiesenen Aufgaben mit Verantwortlichen und Fälligkeitsdatum. Füge wenn möglich das Transkriptsegment und den Zeitstempel hinzu.",
       "format": "list",
-      "item_format": "| **Owner** | Task | Due | Reference Transcript Segment | Segment Time stamp |\n| --- | --- | --- | --- | --- |"
+      "item_format": "| **Verantwortlich** | Aufgabe | Fällig bis | Referenz-Transkript | Zeitstempel |\n| --- | --- | --- | --- | --- |"
     },
     {
-      "title": "Discussion Highlights",
-      "instruction": "Summarize the main topics of discussion, key arguments, and important insights.",
+      "title": "Diskussionshöhepunkte",
+      "instruction": "Zentrale Diskussionsthemen, Kernaussagen und wichtigste Erkenntnisse.",
       "format": "paragraph"
     }
   ]
